@@ -2,7 +2,11 @@ package com.hackernews;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.ComponentScan;
 
+@EnableCaching
+@ComponentScan({"com.hackernews"})
 @SpringBootApplication
 public class HackernewsAppApplication {
 
@@ -10,4 +14,6 @@ public class HackernewsAppApplication {
 		SpringApplication.run(HackernewsAppApplication.class, args);
 	}
 
+	
+    
 }
