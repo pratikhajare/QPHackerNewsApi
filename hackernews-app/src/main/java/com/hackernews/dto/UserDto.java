@@ -24,9 +24,6 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 public class UserDto implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@NonNull
@@ -40,7 +37,6 @@ public class UserDto implements Serializable {
 
 	private String karma;
 
-	@CreationTimestamp
 	@JsonFormat(shape= JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'hh:mm:ss")
 	@JsonSerialize(using = LocalDateTimeSerializer.class)
 	@JsonDeserialize(using = LocalDateTimeDeserializer.class)

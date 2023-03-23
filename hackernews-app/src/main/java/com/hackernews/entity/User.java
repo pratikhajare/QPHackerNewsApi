@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 
 import lombok.Data;
@@ -34,6 +35,7 @@ public class User {
 	@Column(name = "karma")
 	private String karma;
 	
+	@CreationTimestamp
 	@Column(name = "created_time")
 	private LocalDateTime createdTime;
 }

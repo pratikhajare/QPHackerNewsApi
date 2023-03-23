@@ -2,6 +2,7 @@ package com.hackernews.serviceimpl;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.hackernews.dao.CommentRepository;
 import com.hackernews.dto.CommentDto;
+import com.hackernews.dto.StoryComment;
 import com.hackernews.mapper.CommentMapper;
 import com.hackernews.service.CommentService;
 
@@ -32,9 +34,15 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public List<CommentDto> fetchTopComments() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<CommentDto> fetchTopComments(String storyIdentifier) {
+		if (storyIdentifier != null && !storyIdentifier.isEmpty()) {
+			List<CommentDto> comments = commentRepository.fetchTopCommentForStory(storyIdentifier).stream()
+					.map(CommentDto::new).collect(Collectors.toList());
+			if (comments != null && !comments.isEmpty()) {
+				return comments;
+			}
+		}
+		return Collections.emptyList();
 	}
 
 }

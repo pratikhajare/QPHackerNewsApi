@@ -2,9 +2,7 @@
 create database hackernewsapp;
 
 use hackernewsapp;
-drop table comments;
-drop table story;
-drop table user;
+
 create table user(
   user_id varchar(32) not null,
   username varchar(254) not null,
@@ -39,9 +37,28 @@ create table comments(
     constraint comment_story_fk foreign key (story_id) references Story(story_id)
 );
 
+SELECT s.* FROM story s
+WHERE s.submission_time >= now() - interval '15' minute order by s.score limit 10;
 
+SELECT c1.*, COUNT(c2.comment_id) AS child_comment_count
+FROM comments c1
+LEFT JOIN comments c2 ON c1.comment_id = c2.parent_comment_id
+WHERE c1.story_id = ''
+ORDER BY child_comment_count DESC
+LIMIT 10;
 
+SELECT u.* FROM user u;
+SELECT s.* FROM story s;
+SELECT c.* FROM comments c;
 
+SELECT s.* FROM story s
+WHERE s.submission_time >= now() - interval '15' minute order by s.score limit 10;
+
+select timestamp(now() - interval '15' minute);
+
+SELECT c1.*,  cast(COUNT(c2.comment_id) as UNSIGNED) AS child_comment_count FROM comments c1 LEFT JOIN comments c2 
+ON c1.comment_id = c2.parent_comment_id WHERE c1.story_id = '402880eb870b30c901870b30e6930000' 
+ORDER BY child_comment_count DESC LIMIT 10;
 
 
 

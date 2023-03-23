@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hackernews.constants.ApiConstants;
 import com.hackernews.constants.MessageConstants;
 import com.hackernews.dto.CommentDto;
 import com.hackernews.dto.ResponseDto;
+import com.hackernews.dto.StoryComment;
 import com.hackernews.dto.StoryDto;
 import com.hackernews.dto.UserDto;
 import com.hackernews.service.CommentService;
@@ -71,7 +73,7 @@ public class HackerNewsController {
 		if (stories != null && !stories.isEmpty()) {
 			return new ResponseDto(true, stories, MessageConstants.RECORD_RETRIEVED_SUCCESSFULLY);
 		}
-		return new ResponseDto(false, null, MessageConstants.RECORD_ALREADY_EXISTS);
+		return new ResponseDto(false, null, MessageConstants.RECORD_DOES_NOT_EXISTS);
 	}
 	
 	@GetMapping(ApiConstants.API_HACKER_NEWS_GET_PAST_STORIES)
@@ -80,15 +82,15 @@ public class HackerNewsController {
 		if (pastStories != null && !pastStories.isEmpty()) {
 			return new ResponseDto(true, pastStories, MessageConstants.RECORD_RETRIEVED_SUCCESSFULLY);
 		}
-		return new ResponseDto(false, null, MessageConstants.RECORD_ALREADY_EXISTS);
+		return new ResponseDto(false, null, MessageConstants.RECORD_DOES_NOT_EXISTS);
 	}
 	
-	@GetMapping(ApiConstants.API_HACKER_NEWS_GET_PAST_STORIES)
-	public ResponseDto fetchTopComments() {
-		List<CommentDto> topComments = commentService.fetchTopComments();
+	@GetMapping(ApiConstants.API_HACKER_NEWS_GET_TOP_COMMENTS_FOR_STORY)
+	public ResponseDto fetchTopComments(@RequestParam String storyIdentifier) {
+		List<CommentDto> topComments = commentService.fetchTopComments(storyIdentifier);
 		if (topComments != null && !topComments.isEmpty()) {
 			return new ResponseDto(true, topComments, MessageConstants.RECORD_RETRIEVED_SUCCESSFULLY);
 		}
-		return new ResponseDto(false, null, MessageConstants.RECORD_ALREADY_EXISTS);
+		return new ResponseDto(false, null, MessageConstants.RECORD_DOES_NOT_EXISTS);
 	}
 }

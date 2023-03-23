@@ -1,6 +1,7 @@
 package com.hackernews.dto;
 
-import java.time.LocalTime;
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 import javax.validation.constraints.NotNull;
 
@@ -12,7 +13,18 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 
-public class StoryDto {
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Builder.Default;
+import lombok.Data;
+import lombok.experimental.SuperBuilder;
+
+@Data
+@AllArgsConstructor
+@SuperBuilder
+public class StoryDto implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 
 	@NotNull
 	private String storyId;
@@ -26,11 +38,14 @@ public class StoryDto {
 
 	private Integer score;
 
-	@CreationTimestamp
+
 	@JsonFormat(shape= JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'hh:mm:ss")
 	@JsonSerialize(using = LocalDateTimeSerializer.class)
 	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
-	private LocalTime submissionTime;
+	private LocalDateTime submissionTime;
 
 	private String url;
+	
+	@Builder.Default
+	private String isViewed = "N";
 }

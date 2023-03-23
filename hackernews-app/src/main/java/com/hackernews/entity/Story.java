@@ -1,6 +1,6 @@
 package com.hackernews.entity;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,15 +9,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import lombok.experimental.SuperBuilder;
 
 @Data
 @Table(name = "story")
 @Entity
+@SuperBuilder
 @NoArgsConstructor
 public class Story {
 
@@ -41,10 +44,13 @@ public class Story {
 	@Column(name = "score")
 	private Integer score;
 
-	@NonNull
+	@CreationTimestamp
 	@Column(name = "submission_time")
-	private LocalTime submissionTime;
+	private LocalDateTime submissionTime;
 
 	@Column(name = "url")
 	private String url;
+	
+	@Column(name = "viewed")
+	private String isViewed;
 }
