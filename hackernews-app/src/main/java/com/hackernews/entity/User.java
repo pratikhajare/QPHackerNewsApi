@@ -14,6 +14,11 @@ import org.hibernate.annotations.GenericGenerator;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/*
+ *  @author Pratik Hajare
+ *  
+ * */
+
 @Data
 @Table(name = "user")
 @Entity
@@ -34,7 +39,7 @@ public class User {
 
 	@Column(name = "karma")
 	private String karma;
-	
+
 	@CreationTimestamp
 	@Column(name = "created_time")
 	private LocalDateTime createdTime;

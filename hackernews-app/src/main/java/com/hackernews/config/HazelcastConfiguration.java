@@ -20,6 +20,10 @@ import com.hazelcast.config.EvictionPolicy;
 import com.hazelcast.config.MapConfig;
 import com.hazelcast.config.MaxSizePolicy;
 
+/*
+ *  @author Pratik Hajare
+ *  
+ * */
 @Configuration
 public class HazelcastConfiguration {
 

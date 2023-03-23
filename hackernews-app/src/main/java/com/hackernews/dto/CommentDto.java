@@ -17,6 +17,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+/*
+ *  @author Pratik Hajare
+ *  
+ * */
 @Data
 @SuperBuilder
 @NoArgsConstructor
@@ -47,7 +51,7 @@ public class CommentDto implements Serializable {
 
 	public CommentDto(Object[] objects) {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
-		
+
 		this.commentId = (String) objects[0];
 		this.userId = (String) objects[1];
 		this.parentComment = (String) objects[2];

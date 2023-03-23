@@ -11,9 +11,13 @@ import org.springframework.stereotype.Service;
 
 import com.hackernews.dao.CommentRepository;
 import com.hackernews.dto.CommentDto;
-import com.hackernews.dto.StoryComment;
 import com.hackernews.mapper.CommentMapper;
 import com.hackernews.service.CommentService;
+
+/*
+ *  @author Pratik Hajare
+ *  
+ * */
 
 @Service
 public class CommentServiceImpl implements CommentService {
@@ -24,6 +28,7 @@ public class CommentServiceImpl implements CommentService {
 	@Autowired
 	CommentMapper commentMapper;
 
+	//Adding comments
 	@Override
 	public List<CommentDto> addComments(@Valid List<CommentDto> comments) {
 		if (comments != null && !comments.isEmpty()) {
@@ -33,6 +38,9 @@ public class CommentServiceImpl implements CommentService {
 		return Collections.emptyList();
 	}
 
+	/**
+	 * Fetches top 10 comments sorted by total child comments using query
+	 */
 	@Override
 	public List<CommentDto> fetchTopComments(String storyIdentifier) {
 		if (storyIdentifier != null && !storyIdentifier.isEmpty()) {

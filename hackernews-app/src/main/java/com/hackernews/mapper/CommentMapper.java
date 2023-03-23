@@ -8,6 +8,10 @@ import org.mapstruct.Mapper;
 import com.hackernews.dto.CommentDto;
 import com.hackernews.entity.Comment;
 
+/*
+ *  @author Pratik Hajare
+ *  
+ * */
 @Mapper(componentModel = "spring")
 public interface CommentMapper {
 

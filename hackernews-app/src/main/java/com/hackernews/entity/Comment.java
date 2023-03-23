@@ -18,6 +18,11 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.experimental.SuperBuilder;
 
+/*
+ *  @author Pratik Hajare
+ *  
+ * */
+
 @Data
 @Entity
 @Table(name = "comments")
@@ -29,17 +34,17 @@ public class Comment {
 	@Id
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")
-	@Column(name = "comment_id",columnDefinition = "CHAR(32)")
+	@Column(name = "comment_id", columnDefinition = "CHAR(32)")
 	private String commentId;
 
 	@NonNull
 	@Size(max = 254)
 	@Column(name = "user_id")
 	private String userId;
-	
+
 	@Column(name = "parent_comment_id")
 	private String parentComment;
-	
+
 	@Column(name = "story_id")
 	private String storyId;
 

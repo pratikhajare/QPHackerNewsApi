@@ -17,6 +17,10 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.experimental.SuperBuilder;
 
+/*
+ *  @author Pratik Hajare
+ *  
+ * */
 @Data
 @Table(name = "story")
 @Entity
@@ -27,7 +31,7 @@ public class Story {
 	@Id
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")
-	@Column(name = "story_id",columnDefinition = "CHAR(32)")
+	@Column(name = "story_id", columnDefinition = "CHAR(32)")
 	private String storyId;
 
 	@NonNull
@@ -50,7 +54,7 @@ public class Story {
 
 	@Column(name = "url")
 	private String url;
-	
+
 	@Column(name = "viewed")
 	private String isViewed;
 }

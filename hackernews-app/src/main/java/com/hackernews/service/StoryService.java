@@ -6,6 +6,10 @@ import javax.validation.Valid;
 
 import com.hackernews.dto.StoryDto;
 
+/*
+ *  @author Pratik Hajare
+ *  
+ * */
 public interface StoryService {
 
 	List<StoryDto> addStories(@Valid List<StoryDto> stories);

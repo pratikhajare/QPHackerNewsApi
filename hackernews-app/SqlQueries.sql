@@ -1,7 +1,11 @@
 
-create database hackernewsapp;
+create database if not exists hackernewsapp;
 
 use hackernewsapp;
+
+drop table if exists comments;
+drop table if exists story;
+drop table if exists user;
 
 create table user(
   user_id varchar(32) not null,
@@ -21,6 +25,7 @@ create table story(
    score int not null default 0,
    submission_time timestamp not null,
    url varchar(1000) null,
+   viewed varchar(1) default "N",
 	constraint story_pk primary key (story_id),
     constraint story_fk foreign key (user_id) references User(user_id)
 );
@@ -37,28 +42,23 @@ create table comments(
     constraint comment_story_fk foreign key (story_id) references Story(story_id)
 );
 
-SELECT s.* FROM story s
-WHERE s.submission_time >= now() - interval '15' minute order by s.score limit 10;
-
-SELECT c1.*, COUNT(c2.comment_id) AS child_comment_count
-FROM comments c1
-LEFT JOIN comments c2 ON c1.comment_id = c2.parent_comment_id
-WHERE c1.story_id = ''
-ORDER BY child_comment_count DESC
-LIMIT 10;
-
 SELECT u.* FROM user u;
 SELECT s.* FROM story s;
 SELECT c.* FROM comments c;
 
 SELECT s.* FROM story s
-WHERE s.submission_time >= now() - interval '15' minute order by s.score limit 10;
+WHERE s.submission_time >= now() - interval '15' minute order by s.score ASC limit 10;
 
-select timestamp(now() - interval '15' minute);
-
-SELECT c1.*,  cast(COUNT(c2.comment_id) as UNSIGNED) AS child_comment_count FROM comments c1 LEFT JOIN comments c2 
+SELECT c1.*,  cast(COUNT(c2.comment_id) as char) AS child_comment_count FROM comments c1 LEFT JOIN comments c2 
 ON c1.comment_id = c2.parent_comment_id WHERE c1.story_id = '402880eb870b30c901870b30e6930000' 
 ORDER BY child_comment_count DESC LIMIT 10;
+
+update story set viewed = 'Y' where story_id in ('');
+
+delete from story where story_id = '402880ec870f7d5301870f7db5290000';
+
+
+
 
 
 

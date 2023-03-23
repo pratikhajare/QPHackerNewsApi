@@ -1,112 +1,145 @@
 Users
 {
-  "about" : "This is a test",
+  "about" : "This is a profound personal with good knowledge about java.",
   "createdTime" : "2023-03-23T02:00:00",
   "userId": "",
   "karma" : 2937,
- "username": "test-user"
+ "username": "patrick-parker"
+}
+
+{
+  "about" : "Author of Book "How to learn Spring boot and Microservices.",
+  "createdTime" : "2023-03-23T02:00:00",
+  "userId": "",
+  "karma" : 2345,
+ "username": "nitindeshmukh0897"
 }
 
 
 Stories
-[{
-  "user_id" : "402880eb870b115001870b16547a0001",
-  "descendants" : 0,
-  "story_id" : "",
-  "score" : 111,
-  "submissionTime" : "2023-03-23T02:00:00",
-  "title" : "My YC app: Dropbox - Throw away your USB drive",
-  "url" : "http://www.getdropbox.com/u/2/screencast.html"
-}]
-
-[{
-  "user_id" : "402880eb870b115001870b16547a0001",
-  "descendants" : 0,
-  "storyId" : "",
-  "score" : 200,
-  "submissionTime" : "",
-  "title" : "My YC application: resolve.",
-  "url" : "http://www.getdropbox.com/u/2/screencast.html"
-}]
-
-
-[{
-  "userId" : "402880eb870b115001870b16547a0001",
-  "descendants" : 0,
-  "story_id" : "",
-  "score" : 100,
-  "submissionTime" : "",
-  "title" : "My YC Combinater",
-  "url" : "http://www.getdropbox.com/u/2/screencast.html"
-}]
-
-[{
-  "userId" : "402880eb870b115001870b16547a0001",
-  "descendants" : 0,
-  "storyId" : "",
-  "score" : 93,
-  "submissionTime" : "",
-  "title" : "My YC Combinater about startup success.",
-  "url" : ""
-}]
-
-[{
-  "userId" : "402880eb870b115001870b16547a0001",
-  "descendants" : 0,
-  "storyId" : "",
-  "score" : 20,
-  "submissionTime" : "",
-  "title" : "My YC Combinater about company.",
-  "url" : "http://www.urlnavigator.com/u/2/screencast.html"
-},{
-  "userId" : "402880eb870b115001870b16547a0001",
-  "descendants" : 0,
-  "storyId" : "",
-  "score" : 30,
-  "submissionTime" : "",
-  "title" : "Razorpay and YCCombinator.",
-  "url" : "http://www.razorpay.com"
-}
+[
+  {
+    "userId": "402880ec870feee501870ff488c20001",
+    "descendants": 0,
+    "storyId": "",
+    "score": 111,
+    "submissionTime": "2023-03-23T02:00:00",
+    "title": "My YCNews Story 1",
+    "url": "http://www.getdropbox.com/u/1/screencast.html",
+    "isViewed": "N"
+  },
+  {
+    "userId": "402880ec870feee501870ff488c20001",
+    "descendants": 0,
+    "storyId": "",
+    "score": 310,
+    "submissionTime": "",
+    "title": "My YCNews Story 2",
+    "url": "http://www.getdropbox.com/u/2/screencast.html",
+    "isViewed": "N"
+  },
+  {
+    "userId": "402880ec870feee501870ff488c20001",
+    "descendants": 0,
+    "storyId": "",
+    "score": 230,
+    "submissionTime": "",
+    "title": "My YCNews Story 3",
+    "url": "http://www.getdropbox.com/u/3/screencast.html",
+    "isViewed": "N"
+  },
+  {
+    "userId": "402880ec870feee501870ff6456b0002",
+    "descendants": 0,
+    "storyId": "",
+    "score": 120,
+    "submissionTime": "",
+    "title": "My YC application: resolve 1",
+    "url": "http://www.getdropbox.com/u/2/screencast.html",
+    "isViewed": "N"
+  },
+  {
+    "userId": "402880ec870feee501870ff6456b0002",
+    "descendants": 0,
+    "storyId": "",
+    "score": 100,
+    "submissionTime": "",
+    "title": "My YC Combinater",
+    "url": "http://www.getdropbox.com/u/2/screencast.html",
+    "isViewed": "N"
+  },
+  {
+    "userId": "402880ec870feee501870ff6456b0002",
+    "descendants": 0,
+    "storyId": "",
+    "score": 90,
+    "submissionTime": "",
+    "title": "My YC Combinater Resoluiton 1",
+    "url": "http://www.getdropbox.com/u/2/screencast.html",
+    "isViewed": "N"
+  }
 ]
 
-[{
-  "userId" : "402880eb870b115001870b16547a0001",
-  "descendants" : 0,
-  "storyId" : "",
-  "score" : 10,
-  "submissionTime" : "",
-  "title" : "Zolo and YC Combinator.",
-  "url" : "http://www.zolo.com"
-},{
-  "userId" : "402880eb870b115001870b16547a0001",
-  "descendants" : 0,
-  "storyId" : "",
-  "score" : 150,
-  "submissionTime" : "",
-  "title" : "Goodbook and YCCombinator.",
-  "url" : "http://www.Goodbook.com"
-}
-]
 
 Comments
-
-[{
-"commentId" : "",
-  "userId" : "402880eb870b115001870b16547a0001",
-  "commentId" : "",
-  "parentComment" : "",
-  "text" : "Aw shucks, guys ... you make me blush with your compliments.<p>Tell you what, Ill make a deal: I'll keep writing if you keep reading. K?",
-  "submissionTime" : "",
-}]
 
 [
   {
     "commentId": "",
-    "storyId": "402880eb870b30c901870b30e6930000",
-    "userId": "402880eb870b115001870b16547a0001",
-    "parentComment": "402880eb870b341f01870b42a8ba0004",
-    "comment": "Hey I am child comment of parnet one",
+    "storyId" : "402880ec871009950187100a0a950004",
+    "userId": "402880ec870feee501870ff6456b0002",
+    "parentComment": "",
+    "comment": "Building this apis using spring boot and Java 8. Many more in child comments.",
+    "submissionTime": ""
+  },
+  {
+    "commentId": "",
+    "storyId": "402880ec871009950187100a0a8e0002",
+    "userId": "402880ec870feee501870ff488c20001",
+    "parentComment": "",
+    "comment": "Building hacker news api with performance efficient and clean code.",
     "submissionTime": ""
   }
 ]
-
+[
+  {
+    "commentId": "",
+    "storyId" : "402880ec871009950187100a0a950004",
+    "userId": "402880ec870feee501870ff6456b0002",
+    "parentComment": "402880ec871009950187100e8bd00006",
+    "comment": "1. Hazecast",
+    "submissionTime": ""
+  },
+  {
+    "commentId": "",
+    "storyId" : "402880ec871009950187100a0a950004",
+    "userId": "402880ec870feee501870ff6456b0002",
+    "parentComment": "402880ec871009950187100e8bd00006",
+    "comment": "2. JPA",
+    "submissionTime": ""
+  },
+  {
+    "commentId": "",
+    "storyId" : "402880ec871009950187100a0a950004",
+    "userId": "402880ec870feee501870ff6456b0002",
+    "parentComment": "402880ec871009950187100e8bd00006",
+    "comment": "3. MySQL",
+    "submissionTime": ""
+  },
+  {
+    "commentId": "",
+    "storyId": "402880ec871009950187100a0a8e0002",
+    "userId": "402880ec870feee501870ff488c20001",
+    "parentComment": "402880ec871009950187100e8bd20007",
+    "comment": "Also, by using various technologies.",
+    "submissionTime": ""
+  },
+  {
+    "commentId": "",
+    "storyId": "402880ec871009950187100a0a8e0002",
+    "userId": "402880ec870feee501870ff488c20001",
+    "parentComment": "402880ec871009950187100e8bd20007",
+    "comment": "By using 3 tier architecure.",
+    "submissionTime": ""
+  }
+]

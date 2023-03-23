@@ -5,8 +5,6 @@ import java.time.LocalDateTime;
 
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.annotations.CreationTimestamp;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -15,15 +13,18 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Builder.Default;
 import lombok.Data;
 import lombok.experimental.SuperBuilder;
 
+/*
+ *  @author Pratik Hajare
+ *  
+ * */
 @Data
 @AllArgsConstructor
 @SuperBuilder
 public class StoryDto implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@NotNull
@@ -38,14 +39,13 @@ public class StoryDto implements Serializable {
 
 	private Integer score;
 
-
-	@JsonFormat(shape= JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'hh:mm:ss")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'hh:mm:ss")
 	@JsonSerialize(using = LocalDateTimeSerializer.class)
 	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
 	private LocalDateTime submissionTime;
 
 	private String url;
-	
+
 	@Builder.Default
 	private String isViewed = "N";
 }

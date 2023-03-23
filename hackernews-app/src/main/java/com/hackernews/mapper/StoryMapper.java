@@ -8,6 +8,10 @@ import org.mapstruct.Mapper;
 import com.hackernews.dto.StoryDto;
 import com.hackernews.entity.Story;
 
+/*
+ *  @author Pratik Hajare
+ *  
+ * */
 @Mapper(componentModel = "spring")
 public interface StoryMapper {
 

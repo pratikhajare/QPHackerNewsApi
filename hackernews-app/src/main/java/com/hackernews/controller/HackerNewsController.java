@@ -16,30 +16,44 @@ import com.hackernews.constants.ApiConstants;
 import com.hackernews.constants.MessageConstants;
 import com.hackernews.dto.CommentDto;
 import com.hackernews.dto.ResponseDto;
-import com.hackernews.dto.StoryComment;
 import com.hackernews.dto.StoryDto;
 import com.hackernews.dto.UserDto;
 import com.hackernews.service.CommentService;
-import com.hackernews.service.HackerNewsService;
 import com.hackernews.service.StoryService;
 import com.hackernews.service.UserService;
+
+/*
+ *  @author Pratik Hajare
+ *  
+ * */
 
 @RestController
 @RequestMapping(value = ApiConstants.API_HACKER_NEWS)
 public class HackerNewsController {
 
 	@Autowired
-	HackerNewsService hackerNewsService;
+	UserService userService;
 
 	@Autowired
-	UserService userService;
-	
-	@Autowired
 	StoryService storyService;
-	
+
 	@Autowired
 	CommentService commentService;
 
+	/*
+	 * Some additional Comments 1.Using Swagger and Postman for API testing. 
+	 * 2. Using 3 tier Architecture - Controller, Service, Repository
+	 * 3. Database Used - MYSQL
+	 * 4. Hazelcast cache is Used.
+	 * 
+	 */
+
+	/**
+	 * Adds a new User
+	 *
+	 * @param UserDto
+	 * @return Saved UserDto as data in ResponseDto
+	 */
 	@PostMapping(ApiConstants.API_HACKER_NEWS_ADD_USER)
 	public ResponseDto addUser(@RequestBody @Valid UserDto userDto) {
 		UserDto savedUser = userService.addUser(userDto);
@@ -48,7 +62,13 @@ public class HackerNewsController {
 		}
 		return new ResponseDto(false, null, MessageConstants.RECORD_ALREADY_EXISTS);
 	}
-	
+
+	/**
+	 * Adds a list of Stories
+	 *
+	 * @param List<StoryDto>
+	 * @return Saved StoryDtos List as data in ResponseDto
+	 */
 	@PostMapping(ApiConstants.API_HACKER_NEWS_ADD_STORIES)
 	public ResponseDto addStories(@RequestBody @Valid List<StoryDto> stories) {
 		List<StoryDto> savedStories = storyService.addStories(stories);
@@ -57,7 +77,13 @@ public class HackerNewsController {
 		}
 		return new ResponseDto(false, null, MessageConstants.RECORD_ALREADY_EXISTS);
 	}
-	
+
+	/**
+	 * Adds a list of Comments
+	 *
+	 * @param List<CommentDto>
+	 * @return Saved CommentDtos List as data in ResponseDto
+	 */
 	@PostMapping(ApiConstants.API_HACKER_NEWS_ADD_COMMENTS)
 	public ResponseDto addComments(@RequestBody @Valid List<CommentDto> comments) {
 		List<CommentDto> savedComments = commentService.addComments(comments);
@@ -66,7 +92,13 @@ public class HackerNewsController {
 		}
 		return new ResponseDto(false, null, MessageConstants.RECORD_ALREADY_EXISTS);
 	}
-	
+
+	/**
+	 * Fetches list of top 10 stories ranked by the score in the last 15 minutes and
+	 * returns same stories till 15 mins.
+	 *
+	 * @return StoryDtos List as data in ResponseDto
+	 */
 	@GetMapping(ApiConstants.API_HACKER_NEWS_GET_TOP_STORIES)
 	public ResponseDto fetchTopTenStories() {
 		List<StoryDto> stories = storyService.fetchTopStories();
@@ -75,7 +107,12 @@ public class HackerNewsController {
 		}
 		return new ResponseDto(false, null, MessageConstants.RECORD_DOES_NOT_EXISTS);
 	}
-	
+
+	/**
+	 * Fetches list of past stories served by /topStories above api.
+	 *
+	 * @return StoryDtos List as data in ResponseDto
+	 */
 	@GetMapping(ApiConstants.API_HACKER_NEWS_GET_PAST_STORIES)
 	public ResponseDto fetchPastStories() {
 		List<StoryDto> pastStories = storyService.fetchPastStories();
@@ -84,7 +121,13 @@ public class HackerNewsController {
 		}
 		return new ResponseDto(false, null, MessageConstants.RECORD_DOES_NOT_EXISTS);
 	}
-	
+
+	/**
+	 * Fetches list of top 10 comments on a given story sorted by a total number of
+	 * child comments.
+	 *
+	 * @return CommentDtos List as data in ResponseDto
+	 */
 	@GetMapping(ApiConstants.API_HACKER_NEWS_GET_TOP_COMMENTS_FOR_STORY)
 	public ResponseDto fetchTopComments(@RequestParam String storyIdentifier) {
 		List<CommentDto> topComments = commentService.fetchTopComments(storyIdentifier);

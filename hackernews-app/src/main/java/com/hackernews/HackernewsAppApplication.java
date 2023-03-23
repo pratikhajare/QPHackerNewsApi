@@ -5,8 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ComponentScan;
 
+/*
+ *  @author Pratik Hajare
+ *  
+ * */
 @EnableCaching
-@ComponentScan({"com.hackernews"})
+@ComponentScan({ "com.hackernews" })
 @SpringBootApplication
 public class HackernewsAppApplication {
 
@@ -14,6 +18,4 @@ public class HackernewsAppApplication {
 		SpringApplication.run(HackernewsAppApplication.class, args);
 	}
 
-	
-    
 }

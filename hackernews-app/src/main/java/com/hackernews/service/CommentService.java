@@ -5,7 +5,11 @@ import java.util.List;
 import javax.validation.Valid;
 
 import com.hackernews.dto.CommentDto;
-import com.hackernews.dto.StoryComment;
+
+/*
+ *  @author Pratik Hajare
+ *  
+ * */
 
 public interface CommentService {
 
