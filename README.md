@@ -1,1 +1,1 @@
-# QPHackerNewsApi
+# HackerNewsApi
