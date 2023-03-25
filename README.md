@@ -2,7 +2,7 @@
 Fetching real time  stories and comments of Hacker News using its APIs.
 
 ## APIs  for Fetching stories and comments
-1. **/top-stories** - Rreturn the top 10 stories ranked by the score in the last 15 minutes. Each story have a title, URL, score, time of submission, and the user who submitted it.
+1. **/top-stories** - Return the top 10 stories ranked by the score in the last 15 minutes. Each story have a title, URL, score, time of submission, and the user who submitted it.
 2. **/past-stories** - Returns all the stories that were served previously from the 1st endpoint (/top-stories).
 3. **/comments** - Returns 10 comments (max) on a given story sorted by a total number of child comments. Each comment contains comment text, the user’s hacker news handle.
 
