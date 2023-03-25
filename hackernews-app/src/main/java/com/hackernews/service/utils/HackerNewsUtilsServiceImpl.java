@@ -36,7 +36,7 @@ public class HackerNewsUtilsServiceImpl {
 	/*
 	 * Fetches top ten stories from Hacker News
 	 * 
-	 * @url-request
+	 * @URL -
 	 * https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty&orderBy=%
 	 * 22$priority%22&limitToFirst=10
 	 */
@@ -59,8 +59,7 @@ public class HackerNewsUtilsServiceImpl {
 	/*
 	 * Fetches story or comment by its respective id from Hacker News
 	 * 
-	 * @url-request
-	 * https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty
+	 * @URL - https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty
 	 */
 	public Object fetchItemById(Integer itemId) throws JsonMappingException, JsonProcessingException {
 		if (itemId != null) {
