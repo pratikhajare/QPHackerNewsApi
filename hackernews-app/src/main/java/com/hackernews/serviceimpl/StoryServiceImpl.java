@@ -22,7 +22,6 @@ import com.hackernews.service.utils.HackerNewsUtilsServiceImpl;
  *  @author Pratik Hajare
  *  
  * */
-
 @CacheConfig(cacheNames = "topTenStories")
 @Service
 public class StoryServiceImpl implements StoryService {
