@@ -1,21 +1,22 @@
 package com.hackernews.serviceimpl;
 
-import java.util.Collections;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.hackernews.dao.StoryRepository;
 import com.hackernews.dto.StoryDto;
-import com.hackernews.entity.Story;
 import com.hackernews.mapper.StoryMapper;
 import com.hackernews.service.StoryService;
+import com.hackernews.service.utils.HackerNewsUtilsServiceImpl;
 
 /*
  *  @author Pratik Hajare
@@ -27,61 +28,55 @@ import com.hackernews.service.StoryService;
 public class StoryServiceImpl implements StoryService {
 
 	@Autowired
+	StoryMapper storyMapper;
+
+	@Autowired
 	StoryRepository storyRepository;
 
 	@Autowired
-	StoryMapper storyMapper;
+	HackerNewsUtilsServiceImpl hackerNewsUtilsServiceImpl;
 
 	/**
-	 * Adds Stories
+	 * ̥ Returns top 10 stories in the last 15 mins sorted by score. Caching the
+	 * response to view same stories for 15 mins.
 	 */
+	@Cacheable(key = "'topStories'", unless = "#result == null")
 	@Override
-	public List<StoryDto> addStories(@Valid List<StoryDto> stories) {
-		if (stories != null && !stories.isEmpty()) {
-			return storyMapper.storyEntityListToStoryDtoList(
-					storyRepository.saveAll(storyMapper.storyDtoListToStoryEntityList(stories)));
-		}
-		return Collections.emptyList();
-	}
-
-	/**
-	 * Returns top 10 stories in the last 15 mins sorted by score. 
-	 * Caching the response to view same stories for 15 mins. 
-	 */
-	@Cacheable(key = "'topStories'",unless="#result == null")
-	@Override
-	public List<StoryDto> fetchTopStories() {
-		List<Story> topStories = storyRepository.fetchTopTenStoriesOfLast15Mins();
-		if (topStories != null && !topStories.isEmpty()) {
-			
-			//updates all fetched stories viewed status to 'Y'
-			updateViewedStories(topStories.stream().map(Story::getStoryId).collect(Collectors.toList()));
-			return storyMapper.storyEntityListToStoryDtoList(topStories);
+	public List<StoryDto> fetchTopTenStories() throws JsonMappingException, JsonProcessingException {
+		List<Integer> topStoriesIds = hackerNewsUtilsServiceImpl.fetchTopStories(10);
+		if (topStoriesIds != null && !topStoriesIds.isEmpty()) {
+			List<StoryDto> resultStories = new ArrayList<>();
+			for (Integer storyId : topStoriesIds) {
+				StoryDto story = hackerNewsUtilsServiceImpl
+						.convertToStory(hackerNewsUtilsServiceImpl.fetchItemById(storyId));
+				if (story != null) {
+					resultStories.add(story);
+				}
+			}
+			saveViewedStories(resultStories);
+			return resultStories.stream().sorted(Comparator.comparing(StoryDto::getScore, Comparator.reverseOrder()))
+					.collect(Collectors.toList());
 		}
 		return null;
 	}
 
 	/*
-	 *  updates viewed status as 'Y' of stories 
-	 *  inorder to fetch paststories 
-	 *  */
-	public void updateViewedStories(List<String> storyIndentifierList) {
-		if (storyIndentifierList != null && !storyIndentifierList.isEmpty()) {
-				storyRepository.updateViewedStories(storyIndentifierList);
+	 * saves all top stories accessed by user in database
+	 */
+	public void saveViewedStories(List<StoryDto> stories) {
+		if (stories != null && !stories.isEmpty()) {
+			// saving all top stories in database
+			storyRepository.saveAll(storyMapper.storyDtoListToStoryEntities(stories));
 		}
 	}
 
 	/**
-	 * Fetches all past stories viewed as top 10 stories 
-	 * i.e having viewed switch = 'Y'
+	 * Fetches all past stories viewed as top 10 stories
+	 *
 	 */
 	@Override
 	public List<StoryDto> fetchPastStories() {
-		List<Story> pastStories = storyRepository.fetchPastViewedStories();
-		if (pastStories != null && !pastStories.isEmpty()) {
-			return storyMapper.storyEntityListToStoryDtoList(pastStories);
-		}
-		return Collections.emptyList();
+		return storyMapper.storyEntitiesToStoryDtos(storyRepository.findAll());
 	}
 
 }

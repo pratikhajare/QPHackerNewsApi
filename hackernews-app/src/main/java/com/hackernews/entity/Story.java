@@ -1,20 +1,16 @@
 package com.hackernews.entity;
 
-import java.time.LocalDateTime;
+import java.math.BigInteger;
+import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
-
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.GenericGenerator;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.experimental.SuperBuilder;
 
 /*
@@ -28,33 +24,34 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 public class Story {
 
-	@Id
-	@GeneratedValue(generator = "system-uuid")
-	@GenericGenerator(name = "system-uuid", strategy = "uuid")
-	@Column(name = "story_id", columnDefinition = "CHAR(32)")
-	private String storyId;
+	private static final long serialVersionUID = 1L;
 
-	@NonNull
-	@Size(max = 254)
-	@Column(name = "user_id")
-	private String userId;
+	@Id
+	@Column(name = "story_id")
+	private String id;
+
+	@Column(name = "username")
+	private String by;
 
 	@Column(name = "descendants")
 	private Integer descendants;
 
 	@Column(name = "title")
 	private String title;
-
+	
 	@Column(name = "score")
 	private Integer score;
 
-	@CreationTimestamp
-	@Column(name = "submission_time")
-	private LocalDateTime submissionTime;
+	@Column(name = "submit_time")
+	private BigInteger time;
 
 	@Column(name = "url")
 	private String url;
 
-	@Column(name = "viewed")
-	private String isViewed;
+	@Column(name = "type")
+	private String type;
+
+	@ElementCollection
+//	@Column(name = "kids")
+	private List<String> kids;
 }

@@ -18,14 +18,15 @@ create table user(
 );
 
 create table story(
-  story_id varchar(32) not null,
-  user_id varchar(50) not null,
+  story_id int not null,
+  username varchar(50) not null,
   descendants int not null default 0,
   title varchar(254) not null,
    score int not null default 0,
-   submission_time timestamp not null,
+   submit_time timestamp not null,
    url varchar(1000) null,
-   viewed varchar(1) default "N",
+   type varchar(254) not null,
+   kids json null,
 	constraint story_pk primary key (story_id),
     constraint story_fk foreign key (user_id) references User(user_id)
 );

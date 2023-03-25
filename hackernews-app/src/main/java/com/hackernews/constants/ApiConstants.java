@@ -14,9 +14,9 @@ public class ApiConstants {
 
 	public static final String API_HACKER_NEWS_ADD_COMMENTS = "/comment";
 
-	public static final String API_HACKER_NEWS_GET_TOP_STORIES = "/topStories";
+	public static final String API_HACKER_NEWS_GET_TOP_STORIES = "/top-stories";
 
-	public static final String API_HACKER_NEWS_GET_PAST_STORIES = "/pastStories";
+	public static final String API_HACKER_NEWS_GET_PAST_STORIES = "/past-stories";
 
 	public static final String API_HACKER_NEWS_GET_TOP_COMMENTS_FOR_STORY = "/comments";
 

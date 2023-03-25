@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.hackernews.dto.CommentDto;
 
 /*
@@ -13,8 +15,6 @@ import com.hackernews.dto.CommentDto;
 
 public interface CommentService {
 
-	List<CommentDto> addComments(@Valid List<CommentDto> comments);
-
-	List<CommentDto> fetchTopComments(String storyIdentifier);
+	List<CommentDto> fetchTopComments(Integer storyIdentifier) throws JsonMappingException, JsonProcessingException;
 
 }
